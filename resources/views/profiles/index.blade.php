@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-3 p-5 ">
-                <img src="/storage/{{ $user->profile->image }}"
+                <img src="{{ $user->profile->profileImage() }}"
                     class="w-100 rounded-circle">
             </div>
             <div class="col-8 p-5">
@@ -38,6 +38,7 @@
             </div>
         </div>
         <div class="row">
+            @if ($user->posts && $user->posts->count()>0) 
             @foreach ($user->posts as $post)
                 <div class="col-4 pt-4">
                     <a href="/post/{{ $post->id }}">
@@ -45,6 +46,11 @@
                     </a>
                 </div>
             @endforeach
+            @else
+            <div class="p-10">
+                <h2 >No Posts Available</h2>
+            </div>
+            @endif
         </div>
     </div>
 @endsection
