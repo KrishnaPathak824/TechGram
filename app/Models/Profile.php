@@ -11,11 +11,15 @@ class Profile extends Model
 
     public function profileImage()
     {
-        $imagePath = ($this->image) ? $this->image : "profile/pngtree-admin-and-customer-service-job-vacancies-vector-png-image_6650726.png";
-        return '/storage/' . $imagePath;
+        return ($this->image) ? '/storage/' . $this->image : '/storage/profile/pngtree-admin-and-customer-service-job-vacancies-vector-png-image_6650726.png';
     }
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

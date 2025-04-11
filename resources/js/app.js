@@ -15,8 +15,13 @@ import { createApp } from "vue";
 
 const app = createApp({});
 
-import ExampleComponent from "./components/ExampleComponent.vue";
-app.component("example-component", ExampleComponent);
+import FollowButton from "./components/FollowButton.vue";
+import FollowingCount from "./components/FollowingCount.vue";
+import FollowersCount from "./components/FollowersCount.vue";
+
+app.component("follow-button", FollowButton);
+app.component("following-count", FollowingCount);
+app.component("followers-count", FollowersCount);
 
 /**
  * The following block of code may be used to automatically register your
