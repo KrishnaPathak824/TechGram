@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
     //
+    use HasFactory;
     public function __construct()
     {
         $this->middleware("auth");

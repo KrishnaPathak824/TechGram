@@ -11,6 +11,10 @@ class PostsController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     public function index()
     {
         $users = auth()->user()->following()->pluck('profiles.user_id');
@@ -19,13 +23,11 @@ class PostsController extends Controller
     }
     public function create()
     {
-        $this->middleware("auth");
         return view("posts.create");
     }
 
     public function store()
     {
-        $this->middleware("auth");
         $data = request()->validate([
             "caption" => 'required',
             'image' => ['required', 'image'],

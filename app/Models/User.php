@@ -58,7 +58,7 @@ class User extends Authenticatable
                 $user->profile()->create([
                     'title' => $user->username
                 ]);
-                Mail::to($user->email)->send(new WelcomeMail());
+                // Mail::to($user->email)->send(new WelcomeMail());
             }
         );
     }
@@ -88,8 +88,4 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
-    public function isLikedBy(User $user)
-    {
-        return $this->likes()->where('user_id', $user->id)->exists();
-    }
 }
